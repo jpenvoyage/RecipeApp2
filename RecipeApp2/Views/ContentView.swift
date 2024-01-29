@@ -11,22 +11,38 @@ struct ContentView: View {
     
     @EnvironmentObject var model: RecipeModel
     
+    
     var body: some View {
         
+     
+        NavigationView{
             List(model.recipes) { r in
                 
-                HStack {
-                    Image(r.image)
-                        .resizable()
-                        .scaledToFill()
-                        .frame(width: 50, height: 50, alignment: .center)
-                        .clipShape(Capsule())
-                    Text(r.name)
+                NavigationLink(destination: RecipeDetailView(recipe: r)) {
+                    
+                    HStack(spacing: 20.0) {
+                        Image(r.image)
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width: 50, height: 50, alignment: .center)
+                            .clipShape(Capsule())
+                        Text(r.name)
+                    
+                    
+                }
+           
                 }
             }
+            }
+            
+        }
     }
-}
-
-#Preview {
-    ContentView()
-}
+    #Preview {
+        ContentView()
+            .environmentObject(RecipeModel())
+    }
+    
+    
+    
+    
+    
