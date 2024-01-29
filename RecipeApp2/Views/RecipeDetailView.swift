@@ -41,6 +41,8 @@ struct RecipeDetailView: View {
             }
             
         }
+        .navigationTitle("Detail View")
+        .environmentObject(RecipeModel())
     }
 }
 
